@@ -33,7 +33,7 @@ public class BaseClass {
 	{
 		if (CurrentHealth < Health)
 		{
-			CurrentHealth += System.Math.Round(CurrentHealth*HPRate);
+			CurrentHealth += (int)System.Math.Round(CurrentHealth*HPRate);
 			if (CurrentHealth >= Health)
 			{
 				CurrentHealth = Health;
@@ -51,7 +51,7 @@ public class BaseClass {
 	{
 		if (CurrentResource < Health)
 		{
-			CurrentResource += System.Math.Round(CurrentResource*MPRate);
+			CurrentResource += (int)System.Math.Round(CurrentResource*MPRate);
 			if (CurrentResource >= Resource)
 			{
 				CurrentResource = Resource;
