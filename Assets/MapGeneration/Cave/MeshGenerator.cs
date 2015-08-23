@@ -10,6 +10,7 @@ public class MeshGenerator : MonoBehaviour
     public SquareGrid squareGrid;
     public MeshFilter walls;
     public MeshFilter cave;
+    public int tileTextureValue;
 
     private Dictionary<int, List<Triangle>> trianglDictionary=new Dictionary<int, List<Triangle>>(); 
     List<List<int>> outlines= new List<List<int>>();
@@ -43,12 +44,14 @@ public class MeshGenerator : MonoBehaviour
         mesh.RecalculateNormals();
 
         Vector2[] uvs = new Vector2[vertices.Count];
+
+
         for (int i = 0; i < vertices.Count; i++)
         {
             float percentX = Mathf.InverseLerp(-map.GetLength(0)/2*squareSize, map.GetLength(0)/2*squareSize,
-                vertices[i].x);
-            float percentY = Mathf.InverseLerp(-map.GetLength(0) / 2 * squareSize, map.GetLength(0) / 2 * squareSize,
-                vertices[i].z);
+                vertices[i].x*tileTextureValue);
+            float percentY = Mathf.InverseLerp(-map.GetLength(0) / 2 * squareSize, map.GetLength(0)/2 * squareSize,
+                vertices[i].z*tileTextureValue);
 
             uvs[i] = new Vector2(percentX,percentY);
         }
